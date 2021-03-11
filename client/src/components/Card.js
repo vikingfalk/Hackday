@@ -7,7 +7,7 @@ const Card = ({ card, toggleSelected }) => {
   });
 
   return (
-    <CardEl onClick={() => toggleSelected(card.id, card.type)} selected={card.selected}>
+    <CardEl onClick={() => toggleSelected(card)} selected={card.selected}>
       <img src={card.type === 'picture' ? card.pictureURL : card.flagURL} />
     </CardEl>
   );

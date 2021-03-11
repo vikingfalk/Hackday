@@ -3,3 +3,34 @@
   margin: 0;
   padding: 0;
 }
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+}
+
+.board__column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+}
+
+.container--column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.counter {
+  margin-top: 1rem;
+}

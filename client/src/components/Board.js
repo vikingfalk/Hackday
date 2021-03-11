@@ -1,42 +1,27 @@
 import { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { mapPictureCards, mapFlagCards } from '../helpers';
 import Card from './Card';
+import ButtonEl from '../styledElements/Button';
 
-const Board = () => {
-  const [cards, setCards] = useState([]);
+const Board = ({ incrementTries, setFinished }) => {
+  const [cards, setCards] = useState(null);
   const [error, setError] = useState('');
   const [selected, setSelected] = useState([]);
 
-  const mapPictureCards = countriesData => countriesData.map(country => ({
-    id: uuidv4(),
-    type: 'picture',
-    country: country.name,
-    pictureURL: country.pictureURL,
-    selected: false,
-  }));
-
-  const mapFlagCards = countriesData => countriesData.map(country => ({
-    id: uuidv4(),
-    type: 'flag',
-    country: country.name,
-    flagURL: country.flagURL,
-    selected: false,
-  }));
-
-  const toggleSelected = (id, type) => {
+  const toggleSelected = card => {
     switch (selected.length) {
       case 0:
-        setSelected([{ id, type }]);
+        setSelected([card]);
         break;
       case 1:
-        setSelected(selected[0].type === type
-          ? [{ id, type }]
-          : [...selected, { id, type }]);
+        setSelected(selected[0].type === card.type
+          ? [card]
+          : [...selected, card]);
         break;
       case 2:
         setSelected(selected.map(select => (
-          select.type === type
-            ? ({ id, type })
+          select.type === card.type
+            ? card
             : select)));
         break;
       default:
@@ -44,8 +29,27 @@ const Board = () => {
     }
   };
 
+  const shuffleArray = array => array.sort(() => 0.5 - Math.random());
+
+  const checkMatch = () => {
+    if (selected[0].country === selected[1].country) {
+      setCards(cards.filter(card => card.country !== selected[0].country));
+    }
+    setSelected([]);
+    incrementTries();
+  };
+
   useEffect(() => {
-    console.log(selected);
+    if (cards && cards.length === 0) {
+      setFinished(true);
+    }
+  }, [cards]);
+
+  useEffect(() => {
+    if (!cards) {
+      return;
+    }
+
     setCards(cards.map(card => (selected.some(select => select.id === card.id) ? ({
       ...card,
       selected: true,
@@ -67,18 +71,33 @@ const Board = () => {
         }
         const flagCards = mapFlagCards(data);
         const pictureCards = mapPictureCards(data);
-        setCards([...flagCards, ...pictureCards]);
+        setCards([...shuffleArray(flagCards), ...shuffleArray(pictureCards)]);
       });
   }, []);
 
   return (
-    <section>
-      <h1>Board</h1>
+    <>
       {error && <p>{error}</p>}
-      {cards && cards.map(card => (
-        <Card key={card.id} card={card} toggleSelected={toggleSelected} />
-      ))}
-    </section>
+      <section className="board">
+        <section className="board__column">
+          {cards && cards.filter(card => card.type === 'flag').map(card => (
+            <Card key={card.id} card={card} toggleSelected={toggleSelected} />
+          ))}
+        </section>
+        <section className="board__column">
+          {cards && cards.filter(card => card.type === 'picture').map(card => (
+            <Card key={card.id} card={card} toggleSelected={toggleSelected} />
+          ))}
+        </section>
+      </section>
+      <ButtonEl
+        onClick={selected.length === 2 ? checkMatch : () => {}}
+        disabled={selected.length < 2}
+        match
+      >
+        Match
+      </ButtonEl>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Board from './components/Board';
+import Game from './pages/Game';
 import './App.css';
 
 const App = () => {
@@ -9,8 +9,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Test</h1>
-      <Board />
+      <Game />
     </div>
   );
 };

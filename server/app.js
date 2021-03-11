@@ -30,7 +30,7 @@ const selectRandomCountries = (prevIndex) => {
 
 const fetchPictureURL = async country => {
   const axiosRes = await axios.get(`https://pixabay.com/api/?key=${API_KEY}&q=${country}%20landmark%20-art%20-black%20-white%20-gray&image_type=photo&category=buildings&safesearch=true&orientation=horizontal`);
-  const pictureIndex = getRandomInt(0, 20);
+  const pictureIndex = getRandomInt(0, 15);
   return axiosRes.data.hits[pictureIndex].largeImageURL ;
 }
 

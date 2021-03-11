@@ -5,7 +5,6 @@ export default styled.article`
   width: 250px;
   height: 165px;
   overflow: hidden;
-  margin: 1rem 2rem;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   cursor: pointer;
@@ -23,6 +22,6 @@ export default styled.article`
   }
 
   ${props => props.selected && css`
-      box-shadow: 0 0 2px 6px rgba(245, 132, 20, 1);
+      box-shadow: 0 0 0 6px rgba(245, 132, 20, 1);
     `};
 `;
