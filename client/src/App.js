@@ -1,23 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import Board from './components/Board';
+import './App.css';
 
 const App = () => {
-  const [imageURL, setImageURL] = useState('');
-
   useEffect(() => {
-    fetch('http://localhost:8080')
-      .then(res => res.json())
-      .then(data => {
-        console.log('data: ', data);
-        setImageURL(data.url);
-      });
-  }, []);
+    console.log('app');
+  });
 
   return (
     <div className="App">
       <h1>Test</h1>
-      <img src={imageURL} />
+      <Board />
     </div>
   );
-}
+};
 
 export default App;
