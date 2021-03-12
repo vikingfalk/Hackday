@@ -22,7 +22,7 @@ const selectRandomCountries = (prevIndex) => {
   if (!countriesIndex.includes(randomindex)) {
     countriesIndex.push(randomindex);
   }
-  if (countriesIndex.length >= 5) {
+  if (countriesIndex.length >= 6) {
     return COUNTRIES.filter((country, index) => countriesIndex.includes(index));
   }
   return selectRandomCountries(countriesIndex);

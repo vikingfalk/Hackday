@@ -5,7 +5,7 @@ module.exports = COUNTRIES = [
   },
   {
     name: 'korea',
-    flagURL: 'https://pixabay.com/get/ga163b6b6614e1d093a7ff052381c963233e5292a55c387613e5d220e7401f1e097dcd664703e2f63137f441db53ebf883b9d2ccccb86d8ef58564eef28139bdb_1280.png'
+    flagURL: 'https://pixabay.com/get/g7620ab3ae2d2627fd070461004c60d326cefb0557636cdf1fd8d55b01d0a9c3ebaba8d598c18258d5c976f69ad9af1a5_1280.png'
   },
   {
     name: 'france',
@@ -18,5 +18,9 @@ module.exports = COUNTRIES = [
   {
     name: 'netherlands',
     flagURL: 'https://pixabay.com/get/gac59aa9a131f6c9a4a0565f7c201b82959b002933e4f3971a1f97126c175c41eae5aecd842c7553457733c07ce1b6ad9_1280.png'
+  },
+  {
+    name: 'brazil',
+    flagURL: 'https://pixabay.com/get/g9506cbd4d8e43c94ae4c92a83f933ab28b8aa75afb8d03d907dea1b3fef99df7c71648c6d335be3282f27d2a18526b2e_1280.png'
   }
 ];

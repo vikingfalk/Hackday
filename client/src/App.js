@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Game from './pages/Game';
+import Home from './pages/Home';
 import './App.css';
 
 const App = () => {
@@ -8,9 +10,14 @@ const App = () => {
   });
 
   return (
-    <div className="App">
-      <Game />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/game" component={Game} />
+        </Switch>
+      </div>
+    </Router>
   );
 };
 

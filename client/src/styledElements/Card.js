@@ -11,7 +11,8 @@ export default styled.article`
 
   &:hover {
     ${props => !props.selected && css`
-      box-shadow: 0 0 5px 6px rgba(225, 132, 20, 0.6);
+      /* box-shadow: 0 0 5px 6px rgba(225, 39, 217, 0.6); */
+      box-shadow: 0 0 6px 6px rgba(80, 255, 80, 0.6);
     `}
   }
 
@@ -22,6 +23,7 @@ export default styled.article`
   }
 
   ${props => props.selected && css`
-      box-shadow: 0 0 0 6px rgba(245, 132, 20, 1);
+      /* box-shadow: 0 0 0 6px rgba(255, 50, 230, 1); */
+      box-shadow: 0 0 4px 8px rgba(80, 255, 80, 1);
     `};
 `;
