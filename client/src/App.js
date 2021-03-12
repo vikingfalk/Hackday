@@ -1,23 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Game from './pages/Game';
+import Home from './pages/Home';
+import './App.css';
 
 const App = () => {
-  const [imageURL, setImageURL] = useState('');
-
   useEffect(() => {
-    fetch('http://localhost:8080')
-      .then(res => res.json())
-      .then(data => {
-        console.log('data: ', data);
-        setImageURL(data.url);
-      });
-  }, []);
+    console.log('app');
+  });
 
   return (
-    <div className="App">
-      <h1>Test</h1>
-      <img src={imageURL} />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/game" component={Game} />
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
