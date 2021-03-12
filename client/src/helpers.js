@@ -12,6 +12,6 @@ export const mapFlagCards = countriesData => countriesData.map(country => ({
   id: uuidv4(),
   type: 'flag',
   country: country.name,
-  flagURL: country.flagURL,
+  flagURL: `./assets/flags/${country.name}.png`,
   selected: false,
 }));
